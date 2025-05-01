@@ -1,12 +1,10 @@
 import express from "express";
-import productModel from "../models/product.model.js";
-import mongoose from "mongoose";
 import {
   deleteProduct,
   getProduct,
   postProduct,
   putProduct,
-} from "../controllers/product.controller.js";
+} from "../controller/product.controller.js";
 
 const productRoute = express.Router();
 
