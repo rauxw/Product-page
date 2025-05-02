@@ -60,12 +60,12 @@ export const deleteProduct = async (req, res) => {
     }
     res.status(201).json({
       success: true,
-      message: `Product deleted with id:${id}`,
+      message: `Product deleted `,
     });
   } catch (error) {
     return res.status(400).json({
       success: false,
-      message: `Failed to delete product with id:${id}`,
+      message: `Failed to delete product`,
     });
   }
 };
