@@ -7,7 +7,7 @@ export const useProductStore = create((set) => ({
     if (!newProduct.name || !newProduct.img || !newProduct.price) {
       return { success: false, message: "Please fill all the details" };
     }
-    const res = await fetch("/apiv1/product", {
+    const res = await fetch("/api/product", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newProduct),
@@ -18,7 +18,7 @@ export const useProductStore = create((set) => ({
   },
   fetchProducts: async () => {
     try {
-      const res = await fetch("/apiv1/product");
+      const res = await fetch("/api/product");
       if (!res.ok) {
         throw new Error("Failed to fetch products");
       }
@@ -45,7 +45,7 @@ export const useProductStore = create((set) => ({
     }
   },
   deleteProduct: async (pid) => {
-    const res = await fetch(`/apiv1/product/${pid}`, {
+    const res = await fetch(`/api/product/${pid}`, {
       method: "DELETE",
     });
     const data = await res.json();
@@ -58,7 +58,7 @@ export const useProductStore = create((set) => ({
     return { success: true, message: data.message };
   },
   updateProduct: async (pid, updateProduct) => {
-    const res = await fetch(`/apiv1/product/${pid}`, {
+    const res = await fetch(`/api/product/${pid}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updateProduct),

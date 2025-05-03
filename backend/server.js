@@ -13,10 +13,15 @@ const __dirname = path.resolve();
 
 app.use(express.json());
 
-app.use("/apiv1/product", productRoute);
+app.use("/api/product", productRoute);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+  const frontendPath = path.resolve(__dirname, "frontend/dist");
+
+  app.use(express.static(frontendPath));
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(frontendPath, "index.html"));
+  });
 }
 
 async function main() {
